@@ -18,7 +18,14 @@ const validateName = () => {
 <template>
   <div>
     <label for="name">名前:</label>
-    <input type="text" id="name" v-model="name" @blur="validateName" :data-isvalid="isValid" data-form-type="name" />
+    <input
+      type="text"
+      id="name"
+      v-model="name"
+      @blur="validateName"
+      :data-isvalid="isValid"
+      data-form-type="name"
+    />
     <p v-if="nameError" class="error">{{ nameError }}</p>
   </div>
 </template>

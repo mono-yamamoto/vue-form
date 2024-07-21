@@ -21,7 +21,14 @@ const validateEmail = () => {
 <template>
   <div>
     <label for="email">メールアドレス:</label>
-    <input type="email" id="email" v-model="email" @blur="validateEmail" :data-isvalid="isValid" data-form-type="email" />
+    <input
+      type="email"
+      id="email"
+      v-model="email"
+      @blur="validateEmail"
+      :data-isvalid="isValid"
+      data-form-type="email"
+    />
     <p v-if="emailError" class="error">{{ emailError }}</p>
   </div>
 </template>

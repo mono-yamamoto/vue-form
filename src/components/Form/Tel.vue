@@ -21,7 +21,14 @@ const validateTel = () => {
 <template>
   <div>
     <label for="tel">電話番号:</label>
-    <input type="tel" id="tel" v-model="tel" @blur="validateTel" :data-isvalid="isValid" data-form-type="tel" />
+    <input
+      type="tel"
+      id="tel"
+      v-model="tel"
+      @blur="validateTel"
+      :data-isvalid="isValid"
+      data-form-type="tel"
+    />
     <p v-if="telError" class="error">{{ telError }}</p>
   </div>
 </template>

@@ -7,7 +7,7 @@ pre-push:
   commands:
     lint:
       tags: frontend security
-      run: bun run lint
+      run: npm run lint
 #
 # pre-commit:
 #   parallel: true

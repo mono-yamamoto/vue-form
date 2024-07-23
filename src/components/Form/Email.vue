@@ -4,12 +4,6 @@ import { ref, computed } from 'vue'
 const email = ref('')
 const emailError = ref('')
 
-function aaa() {
-  console.log('hello')
-}
-
-const issVValid = computed(() => emailError.value === '')
-
 const isValid = computed(() => emailError.value === '')
 
 const validateEmail = () => {

@@ -1,17 +1,14 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { validateName } from './validate'
 
 const name = ref('')
 const nameError = ref('')
 
-const isValid = computed(() => nameError.value === '')
+const isValid = computed(() => (name.value === '' ? false : nameError.value === ''))
 
-const validateName = () => {
-  if (name.value.trim() === '') {
-    nameError.value = '名前を入力してください'
-  } else {
-    nameError.value = ''
-  }
+const handleBlur = () => {
+  nameError.value = validateName(name.value).value
 }
 </script>
 
@@ -22,7 +19,7 @@ const validateName = () => {
       type="text"
       id="name"
       v-model="name"
-      @blur="validateName"
+      @blur="handleBlur"
       :data-isvalid="isValid"
       data-form-type="name"
     />

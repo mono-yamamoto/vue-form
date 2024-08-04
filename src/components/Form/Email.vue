@@ -1,20 +1,14 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { validateEmail } from './validate'
 
 const email = ref('')
 const emailError = ref('')
 
-const isValid = computed(() => emailError.value === '')
+const isValid = computed(() => (email.value === '' ? false : emailError.value === ''))
 
-const validateEmail = () => {
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  if (email.value.trim() === '') {
-    emailError.value = 'メールアドレスを入力してください'
-  } else if (!emailPattern.test(email.value)) {
-    emailError.value = '有効なメールアドレスを入力してください'
-  } else {
-    emailError.value = ''
-  }
+const handleBlur = () => {
+  emailError.value = validateEmail(email.value).value
 }
 </script>
 
@@ -25,7 +19,7 @@ const validateEmail = () => {
       type="email"
       id="email"
       v-model="email"
-      @blur="validateEmail"
+      @blur="handleBlur"
       :data-isvalid="isValid"
       data-form-type="email"
     />

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, defineEmits } from 'vue'
 
-const emit = defineEmits(['update:childIsValid'])
+const emit = defineEmits(['update:childIsValid', 'fieldValidated'])
 const childIsValid = ref(false)
 const childFormTypes = ref([])
 const rootElement = ref(null)
@@ -13,6 +13,11 @@ const updateChildState = () => {
     childIsValid.value = Array.from(slotElements).every(
       (el) => el.getAttribute('data-isvalid') === 'true'
     )
+    slotElements.forEach((el) => {
+      if (el.getAttribute('data-isvalid') === 'true') {
+        emit('fieldValidated', el.getAttribute('data-form-type'))
+      }
+    })
   }
   emit('update:childIsValid', childIsValid.value)
 }

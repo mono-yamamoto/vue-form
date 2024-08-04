@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import * as Form from './components/Form/_index.js'
 
 const form = reactive({
@@ -8,26 +8,51 @@ const form = reactive({
   message: ''
 })
 
-const childIsValid = ref(false)
+const childIsValid = reactive({
+  item1: false,
+  item2: false
+})
 
-const handleChildIsValidUpdate = (value) => {
-  childIsValid.value = value
+const handleChildIsValidUpdate = (key, value) => {
+  childIsValid[key] = value
 }
 
 const submitForm = () => {
   console.log('フォームが送信されました:', form)
+}
+
+const handleFieldValidated = (formType) => {
+  if (formType === 'name') {
+    console.log('Nameフィールドがバリデーションを通過しました')
+    // ここにNameフィールドがバリデーションを通過したときの処理を記述
+  } else if (formType === 'email') {
+    console.log('emailフィールドがバリデーションを通過しました')
+    // ここにTelフィールドがバリデーションを通過したときの処理を記述
+  }
 }
 </script>
 
 <template>
   <div class="form-container">
     <form @submit.prevent="submitForm">
-      <Form.ItemWrapper @update:childIsValid="handleChildIsValidUpdate">
+      <Form.ItemWrapper
+        @fieldValidated="handleFieldValidated"
+        @update:childIsValid="(value) => handleChildIsValidUpdate('item1', value)"
+      >
         <Form.Name />
         <Form.Email />
+        <p>ああああ{{ childIsValid.item1 }}</p>
+        <Form.NextButton :isDisabled="childIsValid.item1" />
+      </Form.ItemWrapper>
+      <Form.ItemWrapper
+        @fieldValidated="handleFieldValidated"
+        @update:childIsValid="(value) => handleChildIsValidUpdate('item2', value)"
+      >
+        <Form.Name />
+        <Form.Email />
+        <p>ああああ{{ childIsValid.item2 }}</p>
       </Form.ItemWrapper>
       <Form.Tel />
-      <p>ああああ{{ childIsValid }}</p>
       <button type="submit">送信</button>
     </form>
   </div>

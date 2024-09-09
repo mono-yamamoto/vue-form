@@ -1,16 +1,9 @@
 ---
 # You can also start simply with 'default'
-theme: seriph
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
 # some information about your slides (markdown enabled)
-title: Welcome to Slidev
-info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
+title: Tailwind CSS
 # apply unocss classes to the current slide
 class: text-center
 # https://sli.dev/features/drawing
@@ -22,617 +15,521 @@ transition: slide-left
 mdc: true
 ---
 
-# Welcome to Slidev
-
-Presentation slides for developers
-
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
-  </span>
-</div>
-
-<div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub" title="Open in GitHub"
-    class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
-</div>
-
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
+# Tailwind CSS
 
 ---
-transition: fade-out
 ---
 
-# What is Slidev?
+# 話すこと
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/features/slide-scope-style
--->
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
-<!--
-Here is another comment.
--->
+- Tailwind CSSってなーに
+- いいところ
+- わるいところ
+- FAQ
+- まとめ
 
 ---
-transition: slide-up
+layout: section
 level: 2
 ---
 
-# Navigation
-
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
-
-## Keyboard Shortcuts
-
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
-
-<!-- https://sli.dev/guide/animations.html#click-animation -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+# Tailwind CSSってなーに
 
 ---
-layout: two-cols
-layoutClass: gap-16
+layout: default
 ---
 
-# Table of contents
+## Tailwind CSSってなーに
+<br>
 
-You can use the `Toc` component to generate a table of contents for your slides:
+- ユーティリティファーストの CSS フレームワーク
+  - ユーティリティファーストとは、CSSフレームワークの設計哲学の一つで、特定のスタイルを適用するための小さなクラス（ユーティリティクラス）を多用するアプローチのこと。
+  - 現環境のmt-mdやtext-centerと同じように、現在あるCSSのプロパティほぼ全てをユーティリティクラスに落とし込んだもの
+  - tailwind.configを設定することで、クラスに好きな値を設定できる
+- 世界的に人気なCSSフレームワーク
+  - 利用満足度は2019年から今までほぼ1位
+  - 利用率は2021年から2位（1位はbootstrap）
+  - デジタル庁のサイトでも使われてた
 
+---
+layout: two-cols-header
+layoutClass: gap-5
+---
+
+<img class="mx-auto" src="./img/button.png" alt="" />
+
+::left::
+
+## 通常
 ```html
-<Toc minDepth="1" maxDepth="1"></Toc>
-```
+<button class="button">ボタン</button>
+<style>
+.button {
+  /* bg-blue-500 */
+  background-color: rgb(59 130 246);
+  /* text-white */
+  color: #fff;
+  /* py-2 px-4 */
+  padding: 0.5rem 1rem;
+  /* rounded-md */
+  border-radius: 0.375rem;
 
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
+  &:hover {
+    /* hover:bg-blue-700 */
+    background-color: rgb(37 99 235);
+  }
+}
+</style>
+```
 
 ::right::
 
-<Toc v-click minDepth="1" maxDepth="2"></Toc>
+## Tailwind CSS
 
----
-layout: image-right
-image: https://cover.sli.dev
----
-
-# Code
-
-Use code snippets and get the highlighting directly, and even types hover![^1]
-
-```ts {all|5|7|7-8|10|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-
-import { computed, ref } from 'vue'
-
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
-
-doubled.value = 2
+```html
+<button
+  class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+>
+  ボタン
+</button>
 ```
 
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="334" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
-
-<!-- Footer -->
-[^1]: [Learn More](https://sli.dev/guide/line-highlighting)
-
-<!-- Inline style -->
-<style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
-<!--
-Notes can also sync with clicks
-
-[click] This will be highlighted after the first click
-
-[click] Highlighted with `count = ref(0)`
-
-[click:3] Last click (skip two clicks)
--->
-
 ---
-level: 2
+layout: default
 ---
 
-# Shiki Magic Move
-
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
-
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
-
+### tailwind.configにデザインシステムを反映できる
 ````md magic-move {lines: true}
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
-```
-
-```ts {*|1-2|3-4|3-4,8}
-// step 2
+```js
 export default {
-  data() {
-    return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      }
-    }
-  }
+  theme: {
+    extend: {
+      colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
+        black: '#000',
+        white: '#ffffff',
+        gray: {
+          1: '#4a5f62',
+          2: '#677d7f',
+        },
+      },
+    },
+  },
 }
 ```
 
-```ts
-// step 3
+```js {7}
 export default {
-  data: () => ({
-    author: {
-      name: 'John Doe',
-      books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
-      ]
-    }
-  })
+  theme: {
+    extend: {
+      colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
+        black: '#000',
+        white: '#ffffff',
+        gray: {
+          1: '#4a5f62',
+          2: '#677d7f',
+        },
+      },
+    },
+  },
 }
 ```
 
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
+```js {7}
+export default {
+  theme: {
+    extend: {
+      colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
+        black: 'red',
+        white: '#ffffff',
+        gray: {
+          1: '#4a5f62',
+          2: '#677d7f',
+        },
+      },
+    },
+  },
 }
-</script>
 ```
 ````
 
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
 ```html
-<Counter :count="10" />
+<p class="text-black">hello</p>
 ```
 
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
+出力結果：<span v-click.hide="+2" class="text-[#000]">hello</span><span v-click.show="+2" class="text-red ml-[-40px]">hello</span>
 
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-<!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
--->
 
 ---
-class: px-20
+layout: iframe
+url: https://2023.stateofcss.com/ja-JP/css-frameworks/
 ---
 
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
 
 ---
+layout: section
+---
 
-# Clicks Animations
+# いいところ
 
-You can add `v-click` to elements to add a click animation.
+---
+layout: default
+---
 
-<div v-click>
-
-This shows up when you click the slide:
-
-```html
-<div v-click>This shows up when you click the slide.</div>
-```
-
-</div>
-
+## いいところ
 <br>
 
-<v-click>
+- ドキュメントが整備されている＆勝手に更新される
+- デザインシステムを反映しやすい
+- <span v-mark.red="1">クラス名を考えなくていい</span>
+- <span v-mark.red="1">開発時のビルドは不要</span>
+- <span v-mark.red="1">クラス名の補完が効く</span>
+- <span v-mark.red="1">重複CSSを削減できる</span>
 
-The <span v-mark.red="3"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="4">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
+---
+layout: default
+---
+### クラス名を考えなくていい
+Tailwindcssの一番の恩恵だと思っています。
+#### クラス名を考えなくて良くなるメリット
+- 純粋に楽
+- クラス名が他で使用されていないか気にしなくていい
+- クラス名に一貫性が生まれる  
+通常の命名だと実装者によってばらつきが出る。  
+例  
+text or txt  
+button or btn  
+outerの次はinner or container
+
+---
+layout: two-cols-header
+layoutClass: gap-x-5
+---
+### 開発時のビルドは不要
+ユーティリティクラスを使用する分には、最初のパッケージインストール以降はビルドは不要です。  
+環境負荷が下がってとっても嬉しい
+#### いつビルドが必要？
+- tailwind.configを編集した場合  
+コンフィグの内容をクラスに反映するため
+- デプロイ時  
+使用していないCSSを削除するため
 
 ```html
-<span v-mark.underline.orange>inline markers</span>
+<button class="bg-red-100">ボタン</button>
 ```
 
+::left::
+ビルド前
+```css
+.bg-red-100 {
+  background-color: #ff000f;
+}
+.bg-red-200 {
+  background-color: #ff001f;
+}
+```
+
+::right::
+ビルド後
+```css
+.bg-red-100 {
+  background-color: #ff000f;
+}
+```
+
+---
+layout: default
+---
+### クラス名の補完が効く
+VSCodeに拡張機能を入れることによって、クラス名の入力が補完されます。  
+（InteliJも対応してるっぽい）
+
+<img class="mx-auto" src="./img/hokan.png" alt="" />
+
+---
+layout: two-cols-header
+layoutClass: gap-5
+---
+### 重複CSSを削減できる
+utilityクラスの使い回しなので、いくらクラスを書きまくろうが反映されるCSSは一つ。  
+積み重なっていくCSSが減り、容量が重くなりづらい。
+
+::left::
+#### 通常のCSS
+```css
+.container {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+.box {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+```
+
+::right::
+#### Tailwind CSS
+```css
+.flex {
+  display: flex;
+}
+.justify-center {
+  justify-content: center;
+}
+.items-center {
+  align-items: center;
+}
+.gap-3 {
+  gap: 0.75rem;
+}
+```
+
+---
+layout: section
+<!-- https://qiita.com/70ki8suda/items/76209ea566bab4ba1268 -->
+<!-- https://qiita.com/NagayamaToshiaki/items/4f8fd7773545e4f4c009 -->
+<!-- https://yuheiy.hatenablog.com/entry/2020/05/25/021342 -->
+---
+
+# わるいところ
+
+---
+layout: default
+---
+
+## わるいところ
+<br>
+
+  <ul v-mark="{ at: 1, color: 'orange', type: 'circle' }">
+    <li>セマンティックではなく、要素の役割がわかりづらい</li>
+    <li>可読性が悪い</li>
+    <!-- <li>既存ユーティリティクラスとバッティングする可能性がある</li> -->
+    <li>複数箇所で使用されているコンポーネントの修正がめんどい</li>
+  </ul>
+
+- CSSの便利機能が使えない
+
+---
+layout: default
+---
+````md magic-move {lines: true}
+```html
+<a
+  class="card-wrapper group pointer-events-auto relative grid aspect-square h-full w-full grid-rows-[1fr_auto] gap-3 rounded-lg group-[.is]/marker:!grid-rows-[200px_auto] sm:aspect-auto sm:grid-rows-[294px_auto] p-2"
+>
+  <div
+    class="scrollbar-hide pointer-events-auto relative inset-0 flex snap-x snap-mandatory overflow-x-auto w-full object-cover group-[.is]/marker:rounded-b-none h-full"
+  >
+    <img src="dummy.webp" />
+    <img src="dummy.webp" />
+  </div>
+  <button
+    class="pointer-events-auto absolute top-1/2 z-50 hidden h-7 w-7 -translate-y-1/2 place-items-center rounded-full bg-black/40 text-w-3005 opacity-0 backdrop-blur-xs transition-opacity hover:text-white group-hover:opacity-100 md:grid left-4"
+  >
+  </button>
+  <button
+    class="pointer-events-auto absolute top-1/2 z-50 hidden h-7 w-7 -translate-y-1/2 place-items-center rounded-full bg-black/40 text-w-3005 opacity-0 backdrop-blur-xs transition-opacity hover:text-white group-hover:opacity-100 md:grid right-4"
+  >
+  </button>
+  <div
+    class="group-[.is]/marker:rounded-b-lg group-[.is]/marker:bg-black group-[.is]/marker:px-3 group-[.is]/marker:pb-3"
+  >
+    <div class="mb-0.5 flex items-center gap-2 font-medium">
+      Wander Waikōloa Beach
+    </div>
+  </div>
+</a>
+```
+
+```html
+<a
+  class="beach-introduction-card"
+>
+  <div
+    class="slider"
+  >
+    <img src="dummy.webp" />
+    <img src="dummy.webp" />
+  </div>
+  <button
+    class="slider-next-button"
+  >
+  </button>
+  <button
+    class="slider-prev-button"
+  >
+  </button>
+  <div
+    class="beach-detail-box"
+  >
+    <div class="beach-name">
+      Wander Waikōloa Beach
+    </div>
+  </div>
+</a>
+```
+
+```jsx
+<a
+  class="beach-introduction-card"
+>
+ <Slider>
+    <img src="dummy.webp" />
+    <img src="dummy.webp" />
+  </Slider>
+  <AreaDetail
+    title="Wander Waikōloa Beach"
+  />
+</a>
+```
+````
+<br>
+<v-click at="3">
+コンポーネント管理がされていれば可読性は下がらないしセマンティックは保てる<br>
+逆にコンポーネント化をきちんと行わないと負債化するかも
 </v-click>
 
-<div mt-20 v-click>
+---
+layout: default
+transition: fade-out
+---
+### CSSの便利機能が使えない
+<br>
 
-[Learn More](https://sli.dev/guide/animations#click-animation)
+<div>
+  <p>CSSのいろんな機能が使えません。</p>
+  <ul>
+    <li>コンテナクエリ</li>
+    <li>hasセレクタ</li>
+    <li>直下セレクタ（>）</li>
+    <li>等々</li>
+  </ul>
+</div>
 
+<div v-click.hide="[0]">
+  <p>と思ってました</p>
 </div>
 
 ---
+layout: default
+---
+### CSSの便利機能使えます
+<br>
+```html
+<!-- コンテナクエリ -->
+<div class="@container">
+  <div class="block @lg:flex">
+    <!-- ... -->
+  </div>
+</div>
 
-# Motions
+<!-- hasセレクタ -->
+<div class="has-[p]:bg-black">
+  <p>hello</p>
+</div>
 
-Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
+<!-- 直下セレクタ -->
+<ul class="[&>li]:p-4">
+  <li>{item}</li>
+  <li>{item}</li>
+</ul>
+```
+---
+layout: section
+---
+
+# FAQ
+
+---
+layout: default
+---
+
+### Q：任意の値を使えるようにしたくない（かえP氏）
+任意の数値を指定できるArbitrary values
+```html
+<div class="mt-[50px] height-[50%] rounded-[12px] text-[1.5rem]">
+  <!-- ... -->
+</div>
+```
+<br>
+
+### A：eslintでルール追加できます
+
+https://github.com/francoismassart/eslint-plugin-tailwindcss/blob/master/docs/rules/no-arbitrary-value.md
+
+---
+layout: default
+---
+
+### Q：style属性に直接書くのと何が違うの（老氏）
+```html
+<!-- tailwind -->
+<div class="mt-[50px] height-[50%] rounded-[12px] text-[1.5rem]">
+  <!-- ... -->
+</div>
+<!-- style属性 -->
+<div style="margin-top: 50px;height: 50%;border-radius: 12px;font-size: 1.5rem;">
+  <!-- ... -->
+</div>
+```
+<br>
+
+### A：style属性だとmediaクエリや擬似要素等が使えないです
 
 ```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }"
->
-  Slidev
+<!-- tailwind -->
+<div class="mt-[50px] md:mt-10 before:w-2">
+  <!-- ... -->
 </div>
 ```
 
-<div class="w-60 relative">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 30, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
+---
+layout: default
 ---
 
-# LaTeX
+### Q：HTML3.2の時代に戻ってね？（シティボーイ沼田氏）
+せっかくHTML5で関心の分離が行われたのに元に戻しちゃってるのでは？  
+時代を逆行するTailwindはFailwindだ
+```html
+<!-- HTML3.2 -->
+<center>
+  <table cellpadding="0" cellspacing="8" border="0">
+    <tr>
+      <td><a href="#"><font color="#777777"><b>Home</b></font></a></td>
+    </tr>
+  </table>
+</center>
 
-LaTeX is supported out-of-box. Powered by [KaTeX](https://katex.org/).
+```
 
-<div h-3 />
+### A：[Tailwindの作者の回答](https://yuheiy.hatenablog.com/entry/2020/05/25/021342)
 
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$ {1|3|all}
-\begin{aligned}
-\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \\
-\nabla \cdot \vec{B} &= 0 \\
-\nabla \times \vec{E} &= -\frac{\partial\vec{B}}{\partial t} \\
-\nabla \times \vec{B} &= \mu_0\vec{J} + \mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}
-\end{aligned}
-$$
-
-[Learn more](https://sli.dev/features/latex)
+Tailwindアンチの方々の記事  
+https://x.gd/zk8IK  
+https://qiita.com/70ki8suda/items/76209ea566bab4ba1268  
+https://medium.com/codex/the-fail-of-tailwind-the-go-to-for-the-ignorant-7b0aaea405bb  
+https://medium.com/codex/html-illiteracy-part-2-of-2-styling-and-failwind-stupid-f4867d13595a
 
 ---
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
-
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectiveness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-Learn More: [Mermaid Diagrams](https://sli.dev/guide/features/mermaid) and [PlantUML Diagrams](https://sli.dev/guide/features/plantuml)
+layout: section
+---
+# まとめ
 
 ---
-foo: bar
-dragPos:
-  square: 691,32,167,_,-16
+layout: default
 ---
-
-# Draggable Elements
-
-Double-click on the draggable elements to edit their positions.
-
-<br>
-
-###### Directive Usage
-
-```md
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-```
-
-<br>
-
-###### Component Usage
-
-```md
-<v-drag text-3xl>
-  <carbon:arrow-up />
-  Use the `v-drag` component to have a draggable container!
-</v-drag>
-```
-
-<v-drag pos="603,281,261,_,-15"undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined>
-  <div text-center text-3xl border border-main rounded>
-    Double-click me!
-  </div>
-</v-drag>
-
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-
-###### Draggable Arrow
-
-```md
-<v-drag-arrow two-way />
-```
-
-<v-drag-arrow pos="67,452,253,46" two-way op70 />
-
----
-src: ./pages/imported-slides.md
-hide: false
----
-
----
-
-# Monaco Editor
-
-Slidev provides built-in Monaco Editor support.
-
-Add `{monaco}` to the code block to turn it into an editor:
-
-```ts {monaco}
-import { ref } from 'vue'
-import { emptyArray } from './external'
-
-const arr = ref(emptyArray(10))
-```
-
-Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
-
-```ts {monaco-run}
-import { version } from 'vue'
-import { emptyArray, sayHello } from './external'
-
-sayHello()
-console.log(`vue ${version}`)
-console.log(emptyArray<number>(10).reduce(fib => [...fib, fib.at(-1)! + fib.at(-2)!], [1, 1]))
-```
-
----
-layout: center
-class: text-center
----
-
-# Learn More
-
-[Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
-
-<PoweredBySlidev mt-10 />
+### 懸念はあるけど導入してもいい気がしている
+- 
